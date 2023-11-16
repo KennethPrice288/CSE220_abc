@@ -1,8 +1,8 @@
 
-CC   := gcc
-CXX  := g++
-AR   := ar
-LD   := $(CXX)
+CC   := riscv64-linux-gnu-gcc
+CXX  := riscv64-linux-gnu-g++
+AR   := riscv64-linux-gnu-ar
+LD   := $(CXX) -static
 
 MSG_PREFIX ?=
 ABCSRC = .

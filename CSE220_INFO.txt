@@ -1,0 +1,26 @@
+# Changes:
+In order to cross compile for riscv64, the file abc_global.h was modified to define types for the ISA.
+The Makefile has been adjusted to use the riscv64-linux-gnu toolchain, and to use static linking
+Test.c is the program to be ran on ESESC. It can be dropped into the ESESC bins folder without dependencies.
+It is meant to represent a typical synthesis on ABC.
+
+
+# Input file:
+fpu_orig.bench from OpenABC is used as the target for ABC in test.c
+It can be found in this repository: https://github.com/NYU-MLDA/OpenABC
+Usage for test is as follows:
+test /path/to/folder/containing/fpu_orig.bench
+This file was selected as a realistic workload for abc
+
+# To compile:
+make libabc.a ABC_USE_NO_READLINE=1
+riscv64-linux-gnu-gcc -static -Wall -g -c test.c -o test.o
+riscv64-linux-gnu-g++ -static -g -o test test.o libabc.a -lm -ldl -lpthread
+
+# To run on esesc:
+Follow test compilation instructions
+Copy test to ~/build/run/bins
+Make the directory ~/build/run/data/fpu
+Copy fpu_orig.bench to ~/build/run/data/fpu
+Copy abc.sh to ~/build/run
+Move to ~/build/run and run abc.sh

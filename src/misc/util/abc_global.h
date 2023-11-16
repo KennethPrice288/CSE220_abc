@@ -158,6 +158,8 @@ typedef long ABC_PTRDIFF_T;
 typedef long long ABC_PTRDIFF_T;
 #elif     defined(NT) || defined(LIN) || defined(WIN32)
 typedef int ABC_PTRDIFF_T;
+#elif	  defined(__riscv) && __riscv_xlen == 64
+typedef long ABC_PTRDIFF_T;
 #else
    #error unknown platform
 #endif /* defined(PLATFORM) */
@@ -177,6 +179,8 @@ typedef unsigned long ABC_PTRUINT_T;
 typedef unsigned long long ABC_PTRUINT_T;
 #elif     defined(NT) || defined(LIN) || defined(WIN32)
 typedef unsigned int ABC_PTRUINT_T;
+#elif	  defined(__riscv) && __riscv_xlen == 64
+typedef unsigned long ABC_PTRUINT_T;
 #else
    #error unknown platform
 #endif /* defined(PLATFORM) */
@@ -196,6 +200,8 @@ typedef long ABC_PTRINT_T;
 typedef long long ABC_PTRINT_T;
 #elif     defined(NT) || defined(LIN) || defined(WIN32)
 typedef int ABC_PTRINT_T;
+#elif	  defined(__riscv) && __riscv_xlen == 64
+typedef long ABC_PTRINT_T;
 #else
    #error unknown platform
 #endif /* defined(PLATFORM) */
@@ -213,6 +219,8 @@ typedef long ABC_INT64_T;
 typedef long long ABC_INT64_T;
 #elif     defined(WIN32) || defined(NT)
 typedef signed __int64 ABC_INT64_T;
+#elif	  defined(__riscv) && __riscv_xlen == 64
+typedef long ABC_INT64_T;
 #else
    #error unknown platform
 #endif /* defined(PLATFORM) */
@@ -230,6 +238,8 @@ typedef unsigned long ABC_UINT64_T;
 typedef unsigned long long ABC_UINT64_T;
 #elif     defined(WIN32) || defined(NT)
 typedef unsigned __int64 ABC_UINT64_T;
+#elif 	  defined(__riscv) && __riscv_xlen == 64
+typedef unsigned long ABC_UINT64_T;
 #else
    #error unknown platform
 #endif /* defined(PLATFORM) */
